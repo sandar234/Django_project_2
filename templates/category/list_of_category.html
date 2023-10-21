@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} List of Categories {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+        <br><br>
+            <h2 class="text-center mb-4">All Categories</h2>
+            {% if all_categories %}
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>No.</th>
+                            <th>Category Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category in all_categories %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ category.name }}</td>
+                                 <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-danger dropdown-toggle"
+                                                type="button"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                            more actions
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item"
+                                                   href="{% url 'update-category' category.id %}">Update</a>
+                                            </li>
+                                            <li><a class="dropdown-item"
+                                                   href="{% url 'delete-category' category.id %}">Delete</a>
+                                            </li>
+                                            <li><a class="dropdown-item"
+                                                   href="{% url 'details-category' category.id %}">View
+                                                details</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="2" class="text-center">No categories available</td>
+
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="alert alert-info text-center" role="alert">
+                    No categories available.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

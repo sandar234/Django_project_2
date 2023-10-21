@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %} View details - {{ product }} {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <br><br>
+            <div class="card text-center">
+                <div class="card-header">
+                    View details
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ product }}</h5>
+                    <p class="card-text"><strong>Category:</strong> {{ product.category }}</p>
+                    <p class="card-text"><strong>Title:</strong> {{ product.title }}</p>
+                     <p class="card-text"><strong>Author:</strong> {{ product.author }}</p>
+                    <p class="card-text"><strong>Description:</strong> {{ product.description }}</p>
+                    <p class="card-text"><strong>Image:</strong> {{ product.image }}</p>
+                    <p class="card-text"><strong>Price:</strong> {{ product.price }}</p>
+                    <p class="card-text"><strong>In stock:</strong> {{ product.in_stock }}</p>
+                    <p class="card-text"><strong>Is active:</strong> {{ product.is_active }}</p>
+                    <p class="card-text"><strong>Recommended age:</strong> {{ product.recommended_age }}</p>
+                    <p class="card-text"><strong>Language:</strong> {{ product.language }}</p>
+                    <p class="card-text"><strong>Publisher:</strong> {{ product.publisher }}</p>
+                    <p class="card-text"><strong>Cover type:</strong> {{ product.cover_type }}</p>
+                    <p class="card-text"><strong>Page count:</strong> {{ product.page_count }}</p>
+                    <p class="card-text"><strong>I.S.B.N:</strong> {{ product.isbn }}</p>
+                    <p class="card-text"><strong>Dimension lenght:</strong> {{ product.dimensions_length }}</p>
+                    <p class="card-text"><strong>Dimension height:</strong> {{ product.dimensions_height }}</p>
+                    <p class="card-text"><strong>Created at:</strong> {{ product.created_at }}</p>
+                    <p class="card-text"><strong>Updated at:</strong> {{ product.updated_at }}</p>
+                    <a href="{% url 'list-of-products' %}" class="btn btn-primary">Back</a>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    <strong>Create at: </strong> {{ product.created_at|date:"d-m-Y H:i:s" }} / <strong>Updated at:</strong> {{ product.updated_at|date:"d-m-Y H:i:s" }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

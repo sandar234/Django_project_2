@@ -1,0 +1,40 @@
+
+.errorlist{
+    color:red;
+    list-style-type: none;
+}
+
+/* styles.css */
+
+/* Stilizare pentru bara de navigare */
+.navbar {
+    background-color: #6a0572; /* Violet închis */
+}
+
+/* Stilizare pentru link-uri în navbar */
+.navbar-nav .nav-link {
+    color: blueviolet; /* Culoare text link */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffc107; /* Culoare text link la hover */
+}
+
+/* Stilizare pentru dropdown-uri în navbar */
+.navbar-nav .dropdown-menu {
+    background-color: #6a0572; /* Violet închis pentru dropdown */
+}
+
+.navbar-nav .dropdown-menu .dropdown-item {
+    color: #fff; /* Culoare text dropdown-item */
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover {
+    background-color: #ffc107; /* Culoare de fundal a dropdown-item la hover */
+}
+
+/* Adăugare efect de bordură la trecerea peste link-uri "Home", "Category" și "Product" */
+.navbar-nav .nav-item:hover .nav-link {
+    border-bottom: 2px solid #ffc107; /* Culoarea și grosimea bordurii la trecerea peste link */
+}
+
