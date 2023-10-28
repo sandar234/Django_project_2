@@ -5,62 +5,121 @@
 
 {% block content %}
     <div class="container mt-5">
-        <div class="row row-cols-1 row-cols-md-4 g-4">
-            {% for product in all_products %}
-                <div class="col">
-                    <div class="card border-0 shadow-sm"
-                         style="border-radius: 10px; overflow: hidden;">
-                        {% if product.image %}
-                            <img src="{{ product.image.url }}"
-                                 class="card-img-top" alt="Product Image"
-                                 style="object-fit: cover; height: 200px;">
-                        {% else %}
-                            <img src="{% static 'images/booksstore.jpg' %}"
-                                 class="card-img-top" alt="Default Image"
-                                 style="object-fit: cover; height: 200px;">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title"
-                                style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">{{ product.title }}</h5>
-                            <p class="card-text"
-                               style="font-size: 14px; color: #555; margin-bottom: 15px;">{{ product.author }}</p>
-                            <p class="card-text"
-                               style="font-size: 16px; font-weight: bold; color: #28a745;">{{ product.price }}
-                                de lei</p>
-                            {% if product.in_stock %}
-                                <p class="card-title"
-                                   style="font-size: 14px; color: #28a745;">
-                                    Produsul este în stoc</p>
-                            {% else %}
-                                <p class="card-title"
-                                   style="font-size: 14px; color: #dc3545;">
-                                    Produsul nu este în stoc</p>
-                            {% endif %}
-                        </div>
-                        <div class="card-footer text-center">
-                            <div class="dropdown">
-                                <button class="btn btn-danger dropdown-toggle"
-                                        type="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                    more actions
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item"
-                                           href="{% url 'update-product' product.id %}">Update</a>
-                                    </li>
-                                    <li><a class="dropdown-item"
-                                           href="{% url 'delete-product' product.id %}">Delete</a>
-                                    </li>
-                                    <li><a class="dropdown-item"
-                                           href="{% url 'details-product' product.id %}">View
-                                        details</a></li>
-                                </ul>
+        <div class="row">
+            <div class="col-md-12">
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show"
+                         role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close"
+                                data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-12">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-primary"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Filters
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5"
+                                    id="exampleModalLabel">Filters</h1>
+                                <button type="button" class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                             </div>
+                            <form method="get">
+                                <div class="modal-body">
+                                    {{ form_filters.as_p }}
+                                </div>
+                                <div class="modal-footer justify-content-center">
+                                    <button type="submit"
+                                            class="btn btn-outline-primary"
+                                    >Filters
+                                    </button>
+                                    <a href="{% url 'list-of-products' %}"
+                                       class="btn btn-outline-danger">
+                                        Reset
+                                    </a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
+            </div>
+
+
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+                {% for product in all_products %}
+                    <div class="col">
+                        <div class="card border-0 shadow-sm"
+                             style="border-radius: 10px; overflow: hidden;">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}"
+                                     class="card-img-top" alt="Product Image"
+                                     style="object-fit: cover; height: 200px;">
+                            {% else %}
+                                <img src="{% static 'images/booksstore.jpg' %}"
+                                     class="card-img-top" alt="Default Image"
+                                     style="object-fit: cover; height: 200px;">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title"
+                                    style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">{{ product.title }}</h5>
+                                <p class="card-text"
+                                   style="font-size: 14px; color: #555; margin-bottom: 15px;">{{ product.author }}</p>
+                                <p class="card-text"
+                                   style="font-size: 16px; font-weight: bold; color: #28a745;">{{ product.price }}
+                                    de lei</p>
+                                {% if product.in_stock %}
+                                    <p class="card-title"
+                                       style="font-size: 14px; color: #28a745;">
+                                        Produsul este în stoc</p>
+                                {% else %}
+                                    <p class="card-title"
+                                       style="font-size: 14px; color: #dc3545;">
+                                        Produsul nu este în stoc</p>
+                                {% endif %}
+                            </div>
+                            <div class="card-footer text-center">
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-danger dropdown-toggle"
+                                            type="button"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                        more actions
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item"
+                                               href="{% url 'update-product' product.id %}">Update</a>
+                                        </li>
+                                        <li><a class="dropdown-item"
+                                               href="{% url 'delete-product' product.id %}">Delete</a>
+                                        </li>
+                                        <li><a class="dropdown-item"
+                                               href="{% url 'details-product' product.id %}">View
+                                            details</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                        <div class="col-md-8 offset-md-2">
+                            <div class="alert alert-info" role="alert">
+                                No products available!
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

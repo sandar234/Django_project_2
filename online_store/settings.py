@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'userextend',
     'category',
     'product',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'online_store.context_processors.get_all_categories',
+
             ],
         },
     },
@@ -137,3 +140,5 @@ EMAIL_HOST_PASSWORD = 'Django1234!'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "ro48@aplicatiedjango.ro"
+
+

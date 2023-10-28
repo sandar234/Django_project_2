@@ -4,20 +4,71 @@
 {% block title %} List of Categories {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid">
     <div class="row">
+        <div class="col-md-12">
+                {{ current_datetime|date:"d-m-Y H:i:s" }}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show"
+                             role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close"
+                                    data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        <div class="col-md-12">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-primary"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                   Filters
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5"
+                                    id="exampleModalLabel">Filters</h1>
+                                <button type="button" class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <form method="get">
+                            <div class="modal-body">
+                                  {{ form_filters.as_p }}
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="submit" class="btn btn-outline-primary"
+                                       >Filters
+                                </button>
+                                <a href="{% url 'list-of-category' %}" class="btn btn-outline-danger">
+                                    Reset
+                                </a>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <div class="col-md-8 offset-md-2">
-        <br><br>
+        <br>
             <h2 class="text-center mb-4">All Categories</h2>
             {% if all_categories %}
-                <table class="table table-bordered">
-                    <thead class="table-dark">
+                <table class="table">
+                    <thead class="table1">
                         <tr>
                             <th>No.</th>
                             <th>Category Name</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {% for category in all_categories %}
                             <tr>
@@ -25,7 +76,7 @@
                                 <td>{{ category.name }}</td>
                                  <td>
                                     <div class="dropdown">
-                                        <button class="btn btn-danger dropdown-toggle"
+                                        <button class="btn btn-outline-danger dropdown-toggle"
                                                 type="button"
                                                 data-bs-toggle="dropdown"
                                                 aria-expanded="false">

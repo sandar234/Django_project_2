@@ -9,12 +9,12 @@
             <br><br>
             <div class="card text-center">
                 <div class="card-header">
-                    View details
+                    <h3 class="text-center"> View details </h3>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ category }}</h5>
                     <p class="card-text"><strong>Name category</strong> {{ category.name }}</p>
-                    <a href="{% url 'list-of-category' %}" class="btn btn-primary">Back</a>
+                    <a href="{% url 'list-of-category' %}" class="btn btn-outline-primary">Back</a>
                 </div>
                 <div class="card-footer text-body-secondary">
                     <strong>Create at: </strong> {{ category.created_at|date:"d-m-Y H:i:s" }} / <strong>Updated at:</strong> {{ category.updated_at|date:"d-m-Y H:i:s" }}

@@ -1,8 +1,9 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="#"  alt="Logo-ul Navbar" class="logo-img">
+            <img src="{% static 'images/llo.gif' %}" alt="Logo-ul Navbar"
+                 class="logo-img">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -14,32 +15,56 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page"
-                       href="{% url 'home_page' %}">Home</a>
+                    <a class="nav-link active" style="color: white" aria-current="page"
+                       href="{% url 'home_page' %}">HOME</a>
                 </li>
-{#                <li class="nav-item">#}
-{#                    <a class="nav-link" href="#">Features</a>#}
-{#                </li>#}
+                {% if user.is_superuser %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"
+                           role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            CATEGORY
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"
+                                   href="{% url 'create-category' %}">Create a
+                                new category</a></li>
+                            <li><a class="dropdown-item"
+                                   href="{% url 'list-of-category' %}">List of
+                                categories</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"
+                           role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            PRODUCT
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"
+                                   href="{% url 'create-product' %}">Create a
+                                new product</a></li>
+                            <li><a class="dropdown-item"
+                                   href="{% url 'list-of-products' %}">List of
+                                products</a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Category
+                        ALL CATEGORIES
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'create-category' %}">Create a new category</a></li>
-                        <li><a class="dropdown-item" href="{% url 'list-of-category' %}">List of categories</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Product
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'create-product' %}">Create a new product</a></li>
-                        <li><a class="dropdown-item" href="{% url 'list-of-products' %}">List of products</a>
-                        </li>
+                        {% for category in categories %}
+                            <li><a class="dropdown-item"
+                                   href="{% url 'products-by-category' category.id %}">{{ category.name }}</a>
+                            </li>
+                        {% endfor %}
+
                     </ul>
                 </li>
 
@@ -48,9 +73,9 @@
             {% if user.is_authenticated %}
                 <div class="btn-group dropstart">
                     <button type="button"
-                            class="btn btn-outline-primary dropdown-toggle"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        My profile
+                            class="btn btn-outline dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="color: white; ">
+                        MY PROFILE
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item"
@@ -60,16 +85,22 @@
                         </li>
                     </ul>
                 </div>
+                <a href="{% url 'cart-list' %}" class="btn btn-outline-primary mx-2">
+                    <i class="fas fa-shopping-cart"></i> CART
+                </a>
+                <a href="#" class="btn btn-danger">
+                    <i class="fas fa-heart"></i> WISHLIST
+                </a>
 
             {% else %}
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item" style="margin-right:10px;">
                         <a href="{% url 'login' %}"
-                           class="btn btn-outline-success">Login</a>
+                           class="btn btn-outline-primary">Login</a>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'create-user' %}"
-                           class=" btn btn-outline-secondary">Sign Up</a>
+                           class=" btn btn-outline-danger">Sign Up</a>
                     </li>
                 </ul>
             {% endif %}
