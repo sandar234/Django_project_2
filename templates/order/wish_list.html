@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Wishlist Items {% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid content-holder">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {{ current_datetime|date:"d-m-Y H:i:s" }}
+                {% if wish_lists %}
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Product name</th>
+                            <th>Unit Price</th>
+                            <th>Add to cart</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for wish_list in wish_lists %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ wish_list.product.title }}</td>
+                                <td>{{ wish_list.product.price }}</td>
+                                <td>
+                                    <div class="card-footer text-center">
+                                        <a href="{% url 'move-favorites-to-cart' wish_list.id %}" class="btn btn-outline-primary">Add to cart</a>
+                            </div>
+                                </td>
+                                <td><a href="{% url 'delete-from-wishlist' wish_list.id %}" class="btn btn-outline-secondary">Remove</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

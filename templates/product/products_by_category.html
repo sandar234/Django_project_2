@@ -39,7 +39,7 @@
                             </div>
                             <div class="card-footer text-center">
                                 <a href="{% url 'add-to-cart' product.id %}" class="btn btn-outline-primary">Add to cart</a>
-                                <a href="#" class="btn btn-outline-danger">Add to wishlist</a>
+                                <a href="{% url 'add-to-wishlist' product.id %}" class="btn btn-outline-danger">Add to wishlist</a>
                             </div>
                         </div>
                     </div>

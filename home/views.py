@@ -9,8 +9,7 @@ class HomeTemplateView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context[
-            'products'] = Product.objects.all()  # Obține toate produsele și le trimite către șablonul HTML
+        context['products'] = Product.objects.all()  # Obține toate produsele și le trimite către șablonul HTML
         return context
 
 

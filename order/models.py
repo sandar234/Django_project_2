@@ -14,6 +14,8 @@ class OrderCart(models.Model):
     wishlist_item = models.BooleanField(default=False)
     quantity = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    amount = models.IntegerField(null=True)
+
 
     def __str__(self):
         return self.product
