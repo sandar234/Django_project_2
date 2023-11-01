@@ -28,8 +28,8 @@ SECRET_KEY = 'django-insecure-dkdd&p&sn_w&@sgqjjeetu_jeclgnhngn(v92_46&rygzy5tor
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'online-store.sandarus.ro', 'www.online-store.sandarus.ro']
-
+#ALLOWED_HOSTS = ['127.0.0.1', 'online-store.sandarus.ro', 'www.online-store.sandarus.ro']
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
