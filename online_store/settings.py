@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-dkdd&p&sn_w&@sgqjjeetu_jeclgnhngn(v92_46&rygzy5tor
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['my-online-store-app-f5fa6b10697f.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'online-store.sandarus.ro', 'www.online-store.sandarus.ro']
 
 # Application definition
 
