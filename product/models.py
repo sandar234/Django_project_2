@@ -26,6 +26,8 @@ class Product(models.Model):
                                             null=True, blank=True)
     dimensions_height = models.DecimalField(max_digits=5, decimal_places=2,
                                             null=True, blank=True)
+    average_rating = models.FloatField(default=0)  # Scorul mediu al evaluărilor
+    total_ratings = models.IntegerField(default=0)  # Numărul total de evaluări
 
     def __str__(self):
         return f'{self.title} {self.category}'

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Create a new product {% endblock %}
+
+{% block content %}
+<!-- Afișează recenziile existente -->
+<h2>Recenzii:</h2>
+{% for review in reviews %}
+    <p><strong>{{ review.user.username }}:</strong> {{ review.comment }} - {{ review.rating }} stele</p>
+{% empty %}
+    <p>Nici o recenzie încă.</p>
+{% endfor %}
+
+<!-- Formular pentru adăugarea de recenzii -->
+<h2>Adaugă o recenzie:</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Trimite</button>
+</form>
+{% endblock %}
