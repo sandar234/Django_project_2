@@ -1,6 +1,7 @@
 
 from datetime import datetime
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView
@@ -35,6 +36,7 @@ def add_to_cart(request, pk):
             amount=amount,
             created_at=datetime.now()
         )
+    messages.success(request, f"Product added to the cart successfully.")
 
     return redirect('products-by-category', pk)
 
@@ -97,7 +99,8 @@ def add_to_wishlist(request, pk):
             amount = Product.objects.get(id=pk).price,
             created_at=datetime.now()
         )
-    return redirect('home_page')
+    messages.success(request, f"Product added to the wishlist successfully.")
+    return redirect('products-by-category', pk)
 
 
 class ListViewWishList(ListView):
@@ -136,7 +139,7 @@ def move_favorites_to_cart(request, pk):
     current_order = OrderCart.objects.get(user_id=request.user.id, id=pk)
     amount = current_order.quantity * current_order.product.price
     OrderCart.objects.filter(user_id=request.user.id, id=pk).update(cart_item=1, wishlist_item=1, amount=amount)
-
+    messages.success(request, f"Product added to the cart successfully.")
 
     return redirect('cart-list')
 

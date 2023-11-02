@@ -6,56 +6,77 @@
 
 {% block content %}
 
-<div class="container-fluid content-holder">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            {{ current_datetime|date:"d-m-Y H:i:s" }}
-            {% if cart_products %}
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Product name</th>
-                        <th>Unit Price</th>
-                        <th>Quantity</th>
-                        <th>Actions</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for cart_product in cart_products %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td>{{ cart_product.product.title }}</td>
-                        <td>{{ cart_product.product.price }} RON</td>
-                        <td>
-                            <a href="{% url 'decrease-quantity' cart_product.product.id %}" class="btn btn-secondary btn-sm"> - </a>&nbsp;
-                            {{ cart_product.quantity }}
-                            &nbsp;<a href="{% url 'increase-quantity' cart_product.product.id %}" class="btn btn-secondary btn-sm"> + </a>
-                        </td>
-                        <td><a href="{% url 'delete-from-cart' cart_product.id %}" class="btn btn-outline-secondary">Remove</a></td>
-                        <td>{{ cart_product.amount }} RON</td>
-                    </tr>
-                    {% endfor %}
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><b>Total:</td>
-                        <td><b>{{ total_amount }} RON</b></td>
-                    </tr>
-                </tbody>
-            </table>
-                <div class="text-center">
-                    <a href="#" class="btn btn-primary">Place the order</a>
-                </div>
-            {% else %}
-            <p>Your cart is empty.</p>
-            {% endif %}
+    <div class="container-fluid content-holder">
+        <br><br>
+        <div class="row">
+            <div class="col-md-12">
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show"
+                         role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close"
+                                data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-8 offset-md-2">
+                {{ current_datetime|date:"d-m-Y H:i:s" }}
+                {% if cart_products %}
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Product name</th>
+                            <th>Unit Price</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
+                            <th>Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for cart_product in cart_products %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ cart_product.product.title }}</td>
+                                <td>{{ cart_product.product.price }} RON</td>
+                                <td>
+                                    <a href="{% url 'decrease-quantity' cart_product.product.id %}"
+                                       class="btn btn-secondary btn-sm"> - </a>&nbsp;
+                                    {{ cart_product.quantity }}
+                                    &nbsp;<a
+                                        href="{% url 'increase-quantity' cart_product.product.id %}"
+                                        class="btn btn-secondary btn-sm"> + </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'delete-from-cart' cart_product.id %}"
+                                       class="btn btn-outline-secondary">Remove</a>
+                                </td>
+                                <td>{{ cart_product.amount }} RON</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><b>Total:</td>
+                            <td><b>{{ total_amount }} RON</b></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <a href="#" class="btn btn-primary">Place the order</a>
+                    </div>
+                {% else %}
+                    <div class="alert alert-success alert-dismissible fade show"
+                         role="alert">
+                        <p>Your cart is empty.</p>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
 
 {% endblock %}
 
