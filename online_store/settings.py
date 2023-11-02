@@ -139,13 +139,13 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = 'mail.aplicatiedjango.ro'
-EMAIL_HOST_USER = 'ro48@aplicatiedjango.ro'
+EMAIL_HOST = 'mail.sandarus.ro'
+EMAIL_HOST_USER = 'office@sandarus.ro'
 EMAIL_HOST_PASSWORD = 'Django1234!'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "ro48@aplicatiedjango.ro"
+DEFAULT_FROM_EMAIL = "office@sandarus.ro"
 
 
