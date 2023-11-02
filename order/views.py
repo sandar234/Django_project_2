@@ -1,12 +1,16 @@
-
 from datetime import datetime
+from pprint import pprint
+from random import randint
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView
 
-from order.models import OrderCart
+from order.forms import PlaceOrderForm
+from order.models import OrderCart, PlaceOrder
 from product.models import Product
 
 
@@ -67,7 +71,8 @@ class CartListView(ListView):
     context_object_name = 'cart_products'
 
     def get_queryset(self):
-        return OrderCart.objects.filter(cart_item=1)
+        result = (OrderCart.objects.filter(cart_item=1, user_id=self.request.user.id))
+        return result
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -109,7 +114,8 @@ class ListViewWishList(ListView):
     context_object_name = 'wish_lists'
 
     def get_queryset(self):
-        return OrderCart.objects.filter(wishlist_item=1)
+        result =  (OrderCart.objects.filter(wishlist_item=1, user_id=self.request.user.id))
+        return result
 
 
 
@@ -143,3 +149,51 @@ def move_favorites_to_cart(request, pk):
 
     return redirect('cart-list')
 
+
+class PlaceOrderCreateView(LoginRequiredMixin, CreateView):
+    template_name =  'order/place_order.html'
+    model = PlaceOrder
+    form_class = PlaceOrderForm
+    success_url = reverse_lazy('home_page')
+
+    def form_valid(self, form):
+        if form.is_valid():
+            new_order = form.save(commit=False)
+
+            # user_id
+            new_order.user_id = self.request.user.id
+
+            # order number
+            generic_order = randint(1, 100)
+            new_order.order_number = f'ESHOP_{generic_order}'
+
+            # product list
+            products = {'data': []}
+            final_price = 0
+            products_per_user = OrderCart.objects.filter(
+                user_id=self.request.user.id, cart_item=1)
+
+            for item in products_per_user:
+                products['data'].append({'title': item.product.title,
+                                         'quantity': item.quantity,
+                                         'price': f'{item.product.price * item.quantity}'
+                                         })
+
+                final_price += item.product.price * item.quantity
+            new_order.product_list = products
+            pprint(products)
+
+            # price
+            new_order.price = final_price
+
+            # invoice_address
+
+            new_order.invoice_address = new_order.delivery_address
+
+            # created_at
+
+            new_order.created_at = datetime.now()
+
+            new_order.save()
+
+            return redirect('home_page')
