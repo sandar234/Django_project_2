@@ -14,65 +14,65 @@
 /* styles.css */
 
 /* Stilizare pentru bara de navigare */
-/*!*.navbar {*!*/
-/*!*    background-color: #1D3557;*!*/
-/*!*    font-size: 17px;*!*/
-/*!*    font-weight: 500;*!*/
-/*!*    font-stretch: normal;*!*/
-/*!*    line-height: 1.18;*!*/
-/*!*    letter-spacing: .45px;*!*/
-/*!*    font-style: inherit;*!*/
-/*!*    font-family: "Open Sans",Helvetica,Arial,sans-serif;*!*/
-/*!*    color: white;*!*/
-/*!*}*!*/
-/*!*!* Stilurile implicite ale elementelor din navbar *!*!*/
-/*!*.navbar-nav .nav-link,*!*/
-/*!*.navbar-toggler-icon,*!*/
-/*!*.dropdown-item,*!*/
-/*!*.btn-outline-success*!*/
-/*!*{*!*/
-/*!*    outline: none; !* Elimină conturul implicite *!*!*/
-/*!*    border: none; !* Elimină bordura implicite *!*!*/
-/*!*}*!*/
+.navbar {
+    background-color: #1D3557;
+    font-size: 17px;
+    font-weight: 500;
+    font-stretch: normal;
+    line-height: 1.18;
+    letter-spacing: .45px;
+    font-style: inherit;
+    font-family: "Open Sans",Helvetica,Arial,sans-serif;
+    color: white;
+}
+/* Stilurile implicite ale elementelor din navbar */
+.navbar-nav .nav-link,
+.navbar-toggler-icon,
+.dropdown-item,
+.btn-outline-success
+{
+    outline: none; /* Elimină conturul implicite */
+    border: none; /* Elimină bordura implicite */
+}
 
-/*!*!* Adaugă un contur și o bordură atunci când treci cu mouse-ul peste elementele din navbar *!*!*/
-/*!*.navbar-nav .nav-link:hover,*!*/
-/*!*.navbar-toggler-icon:hover,*!*/
-/*!*.dropdown-item:hover,*!*/
-/*!*.btn-outline-success:hover {*!*/
-/*!*    outline: 1px solid white; !* Culoarea conturului la hover *!*!*/
-/*!*    border: 1px solid white; !* Culoarea bordurii la hover *!*!*/
-/*!*    border-radius: 13px; !* Rotunjirea colțurilor bordurii la hover *!*!*/
-/*!*}*!*/
-/*!*!* Text alb pentru elementele din navbar *!*!*/
-/*!*.navbar-nav .nav-link,*!*/
-/*!*.navbar-toggler-icon,*!*/
-/*!*.btn-outline-success {*!*/
-/*!*    color: white !important; !* Setează culoarea textului la alb *!*!*/
-/*!*}*!*/
+/* Adaugă un contur și o bordură atunci când treci cu mouse-ul peste elementele din navbar */
+.navbar-nav .nav-link:hover,
+.navbar-toggler-icon:hover,
+.dropdown-item:hover,
+.btn-outline-success:hover {
+    outline: 1px solid white; /* Culoarea conturului la hover */
+    border: 1px solid white; /* Culoarea bordurii la hover */
+    border-radius: 13px; /* Rotunjirea colțurilor bordurii la hover */
+}
+/* Text alb pentru elementele din navbar */
+.navbar-nav .nav-link,
+.navbar-toggler-icon,
+.btn-outline-success {
+    color: white !important; /* Setează culoarea textului la alb */
+}
 
-/*!*!* Text negru pentru elementele din dropdown *!*!*/
-/*!*.dropdown-item {*!*/
-/*!*    color: black; !* Setează culoarea textului la negru *!*!*/
-/*!*}*!*/
-/*!*.dropdown-item:hover {*!*/
-/*!*    color: #345A8F; !* Setează culoarea textului la albastru la hover *!*!*/
-/*}*/
-/*!* Stilizează meniul dropdown *!*/
-/*.dropdown-menu {*/
-/*    background-color: #ffffff; !* Culoarea fundalului *!*/
-/*    border: 1px solid #ccc; !* Bordura *!*/
-/*    border-radius: 5px; !* Rotunjirea colțurilor *!*/
-/*    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); !* Umbră *!*/
-/*}*/
+/* Text negru pentru elementele din dropdown */
+.dropdown-item {
+    color: black; /* Setează culoarea textului la negru */
+}
+.dropdown-item:hover {
+    color: #345A8F; /* Setează culoarea textului la albastru la hover */
+}
+/* Stilizează meniul dropdown */
+.dropdown-menu {
+    background-color: #ffffff; /* Culoarea fundalului */
+    border: 1px solid #ccc; /* Bordura */
+    border-radius: 5px; /* Rotunjirea colțurilor */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Umbră */
+}
 
-/*!* Stilizează elementele din meniul dropdown *!*/
-/*.dropdown-item {*/
+/* Stilizează elementele din meniul dropdown */
+.dropdown-item {
 
-/*    padding: 10px 20px; !* Spațierea între text și margini *!*/
-/*    transition: all 0.3s ease; !* Efect de tranziție la hover *!*/
-/*    font-family: "Arial", sans-serif;*/
-/*}*/
+    padding: 10px 20px; /* Spațierea între text și margini */
+    transition: all 0.3s ease; /* Efect de tranziție la hover */
+    font-family: "Arial", sans-serif;
+}
 
 form {
     background-color: white;
