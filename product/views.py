@@ -62,7 +62,6 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
 
 
-
 def products_by_category(request, pk):
     products = Product.objects.filter(category_id=pk)
     return render(request, 'product/products_by_category.html', {'products': products})

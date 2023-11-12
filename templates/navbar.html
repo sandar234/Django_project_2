@@ -65,6 +65,18 @@
 
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about-us' %}">
+                        <i class="fas fa-info-circle"></i> ABOUT US
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'shop-finder' %}">
+                        <i class="fas fa-map-marker-alt"></i> SHOP FINDER
+                    </a>
+                </li>
+
             </ul>
             {% if user.is_authenticated %}
                 <div class="btn-group">
@@ -72,7 +84,7 @@
                             class="btn btn-outline dropdown-toggle"
                             data-bs-toggle="dropdown" aria-expanded="false"
                             style="color: white; ">
-                        MY PROFILE
+                        <i class="fas fa-user"></i> MY PROFILE
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item"

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} About Us {% endblock %}
+
+{% block content %}
+    <div class="container fluid">
+        <br><br><br>
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <h2 class="section-heading text-center" style="font-size:30px;font-style:italic;font-family: Baskerville,serif;letter-spacing: .03em;">About Us</h2>
+                    <hr class="my-4">
+                    <p class="text-muted text-center" style="font-size:24px;font-style:italic;font-family: Baskerville,serif;letter-spacing: .03em;">Welcome to our online store!
+                        We are passionate about bringing you the best books in the
+                        market. Our mission is to provide a seamless and enjoyable
+                        shopping experience for all book lovers.</p>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <img class="img-fluid rounded mb-4 larger-image"
+                         src="{% static 'images/about_us1.gif' %}"
+                         alt="About Us Image">
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-heading text-center" style="font-size:30px;font-style:italic;font-family: Baskerville,serif;letter-spacing: .03em;">Our Story</h3>
+                    <br>
+                    <p style="font-size:24px;font-style:italic;font-family: Baskerville,serif;letter-spacing: .03em;">We started our journey with a simple idea: to create a place
+                        where book enthusiasts can discover their next favorite
+                        read. Over the years, we have curated a diverse collection
+                        of books spanning various genres.</p>
+                    <p style="font-size:24px;font-style:italic;font-family: Baskerville,serif;letter-spacing: .03em;">Our team is dedicated to providing excellent customer service
+                        and ensuring that your online shopping experience is smooth
+                        and enjoyable.</p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <h3 class="section-heading text-center" style="font-size:30px;font-style:italic;font-family: Baskerville,serif;letter-spacing: .03em;">Our Impact</h3>
+                    <br>
+                    <p class="text-muted text-center" style="font-size:24px;font-style:italic;font-family: Baskerville,serif;letter-spacing: .03em;">We take pride in the positive
+                        impact we strive to make. Here are some aspects of our
+                        commitment:</p>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <img class="img-fluid rounded mb-4"
+                         src="{% static 'images/about_us2.gif' %}"
+                         alt="Our Impact Image"
+                        style="width: 100%; height: 400px;">
+                </div>
+                <div class="col-lg-6">
+                    <p style="font-size:24px;font-style:italic;font-family: Baskerville,serif;letter-spacing: .03em;">As a socially responsible business, we are committed to
+                        making a positive impact on both local and global
+                        communities. Whether it's supporting literacy programs,
+                        promoting eco-friendly practices, or contributing to
+                        charitable causes, we believe in giving back.</p>
+                    <p style="font-size:24px;font-style:italic;font-family: Baskerville,serif;letter-spacing: .03em;">By choosing our online store, you are not just buying books;
+                        you are contributing to a larger mission of making the world
+                        a better place through the joy of reading.</p>
+                </div>
+            </div>
+
+    </div>
+{% endblock %}

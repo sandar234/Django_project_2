@@ -33,6 +33,7 @@
                     <p class="card-text"><strong>Updated at:</strong> {{ product.updated_at }}</p>
                     <a href="{% url 'list-of-products' %}" class="btn btn-outline-primary">Back</a>
                 </div>
+
                 <div class="card-footer text-body-secondary">
                     <strong>Create at: </strong> {{ product.created_at|date:"d-m-Y H:i:s" }} / <strong>Updated at:</strong> {{ product.updated_at|date:"d-m-Y H:i:s" }}
                 </div>
