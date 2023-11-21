@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Team {% endblock %}
+
+{% block content %}
+    <br><br><br>
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <div class="row">
+        <div class="col-md-6 offset-md-4">
+            <h1>Location of Bucharest, Romania</h1>
+            <div id="map" style="width: 600px; height: 400px;"></div>
+            <br>
+            <script>
+                var map = L.map('map').setView([44.41292, 26.14737], 15);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                }).addTo(map);
+                L.marker([47.1757, 23.0626]).addTo(map)
+                    .bindPopup('Bucharest, Romania')
+                    .openPopup();
+            </script>
+        </div>
+    </div>
+{% endblock %}
